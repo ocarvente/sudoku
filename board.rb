@@ -8,7 +8,7 @@ class Board
 
     #Takes in a file name and splits the data into an array of strings representing the rows. 
     #Iterates through each character in the rows and assigns it to its corresponding place in the grid using the row_num and col_num. 
-    For each row of data it will 
+    #For each row of data it will 
     def self.from_file(file_name)
         grid = Array.new(9) {Array.new(9)}
         file_data = File.read(file_name).split
@@ -98,6 +98,7 @@ class Board
         result
     end 
 
+    #Takes the row and col to generate all the values in one square. 
     def one_square(row,col)
         result = []
         (row...row+3).each do |row|

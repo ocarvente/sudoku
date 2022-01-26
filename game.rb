@@ -1,4 +1,4 @@
-require_relative "board.rb"
+require_relative "board"
 
 class Game
 
@@ -8,6 +8,7 @@ class Game
         @board = Board.new
     end 
 
+    #Prompts the use for a value
     def get_value
         val = ""
         until val.length == 1 && valid_value?(val)
@@ -17,14 +18,17 @@ class Game
         val 
     end 
 
+    #Checks if position is valid 
     def valid_position?(position)
         position.all? {|val| val.between?(0, board.size-1)}
     end 
 
+    #Checks if a value is valid, a number between 0 and 9
     def valid_value?(value)
         value.to_i.between?(0,board.size)
     end 
 
+    #Prompts the use for a position and continues to prompt until it is valid response. 
     def get_position
         pos = []
         until pos.length == 2 && valid_position?(pos)
@@ -39,6 +43,7 @@ class Game
         puts "Then type in a value you want to place in that position "
     end 
     
+    #When called allows the game to be play. Incorporates user interaction. 
     def play 
         until board.solved?
             board.render
@@ -51,6 +56,7 @@ class Game
     end 
 end 
 
+#Runs the following lines of code when file is run. 
 if __FILE__ == $PROGRAM_NAME
     game = Game.new
     game.play
